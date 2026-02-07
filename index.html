@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Colombo Rent a Car | Under Maintenance</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 600px;
+        padding: 40px 30px;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .cover-image {
+        width: 100%;
+        max-width: 420px;
+        margin-bottom: 20px;
+        border-radius: 16px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        object-fit: cover;
+      }
+
+      .countdown {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffd369;
+      }
+
+      h1 {
+        margin-bottom: 15px;
+        font-size: 32px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .email {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+
+      .email a {
+        color: #ffd369;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .email a:hover {
+        text-decoration: underline;
+      }
+
+      .footer {
+        margin-top: 25px;
+        font-size: 14px;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="cover.jpeg" alt="Colombo Rent a Car" class="cover-image" />
+      <h1>Colombo Rent a Car</h1>
+      <p>Our website is currently under maintenance.</p>
+      <p>We are working hard to restore the website as soon as possible.</p>
+      <p>Sorry for the inconvenience, and thank you for your patience.</p>
+
+      <div id="countdown" class="countdown">
+        Site will be back in <span id="timer">Loading...</span>
+      </div>
+
+      <div class="email">
+        Need to make a booking during this period?<br />
+        Please email us at
+        <a href="mailto:info@colomborentacar.lk">info@colomborentacar.lk</a>
+      </div>
+
+      <div class="footer">© 2026 Colombo Rent a Car. All rights reserved.</div>
+    </div>
+    <script>
+      const targetDate = new Date("2026-02-09T10:00:00+05:30").getTime();
+
+      const timerElement = document.getElementById("timer");
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance <= 0) {
+          timerElement.innerHTML = "We’re back online!";
+          clearInterval(countdownInterval);
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        timerElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+
+      updateCountdown();
+      const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>
